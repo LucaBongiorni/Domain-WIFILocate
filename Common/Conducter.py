@@ -60,10 +60,29 @@ class Conducter:
         try:
             # simply pass to my wigle api class
             wa = wigleAPI.WigleAgent(self.WigleUser, self.WiglePassword)
+            kml = kmlBuilder.kml()
             for Network in self.NetworkList:
                 final = wa.get_lat_lng(str(Network['DefaultGatewayMac']))
-                if final:
-                    print final
+                if final != "BSSID (MAC) location not known":
+                    print " Hostname: " + str(Network['HostName'])
+                    print " Network MAC: " + str(Network['DefaultGatewayMac'])
+                    print " DNS Suffix: " + str(Network['DnsSuffix'])
+                    print " Description: " + str(Network['Description'])
+                    print " Lat: " + str(final["lat"])
+                    print " Long: " + str(final["lng"])
+                    print " BSSID: " + str(final["bssid"])
+                    # now Build out the Description as a string:
+                    line =  " Hostname: " + str(Network['HostName'])
+                    line += " Network MAC: " + str(Network['DefaultGatewayMac'])
+                    line += " DNS Suffix: " + str(Network['DnsSuffix'])
+                    line += " Description: " + str(Network['Description'])
+                    line += " FirstNetwork: " + str(Network['FirstNetwork'])
+                    line += " ProfileGuid: " + str(Network['ProfileGuid']) 
+                    line += " Source: " + str(Network['Source'])
+                    line += " Raw JSON Object Collected: " + str(Network)
+                    # now Build the Point Data
+                    kml.buildPoints(final["bssid"], final["lat"], final["long"], line)
+
         except Exception as e:
             print e
 

@@ -1,10 +1,8 @@
-{ 
-"Networks" : [
-{ "DefaultGatewayMac": "C8:A7:0A:CD:23:6A",   "Description": "Network  5",  "DnsSuffix": "fios-router.home",  "FirstNetwork": "Network  5", "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{C2386DC8-9BBF-453C-BF3A-35003647636C}",  "Source": 8},
-{ "DefaultGatewayMac": "00:08:A2:09:59:E6",   "Description": "Network  4",  "DnsSuffix": "atd.ninja",   "FirstNetwork": "Network  4",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{8F140746-F3E7-42FA-B3E6-0A39B3D97428}",  "Source": 8},
-{ "DefaultGatewayMac": "00:50:56:F1:37:8A",   "Description": "Network",   "DnsSuffix": "localdomain",   "FirstNetwork": "Network",  "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{CD612896-DB37-4748-B4A5-311F910886F3}",  "Source": 8},
-{ "DefaultGatewayMac": "E0:2F:6D:6C:B8:05",   "Description": "Network  2",  "DnsSuffix": "<none>",  "FirstNetwork": "Network  2",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{F04D25BB-BFA5-412C-869D-AB079EABBB45}",  "Source": 8},
-{ "DefaultGatewayMac": "00:0C:29:59:7D:17",   "Description": "Network  3",  "DnsSuffix": "<none>",  "FirstNetwork": "Network  3",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{CA7B9E8A-9A66-431E-9CD7-04EC22CD56BE}",  "Source": 8} 
-]
+{ "Networks" : [
+{ "DefaultGatewayMac": "00:0b:6c:c5:fb:2e",   "Description": "Network  5",  "DnsSuffix": "fios-router.home",  "FirstNetwork": "Network  5", "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{C2386DC8-9BBF-453C-BF3A-35003647636C}",  "Source": 8},
+{ "DefaultGatewayMac": "00:0f:66:2f:d4:6b",   "Description": "Network  4",  "DnsSuffix": "atd.ninja",   "FirstNetwork": "Network  4",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{8F140746-F3E7-42FA-B3E6-0A39B3D97428}",  "Source": 8},
+{ "DefaultGatewayMac": "00:0F:66:B8:8E:7A",   "Description": "Network",   "DnsSuffix": "localdomain",   "FirstNetwork": "Network",  "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{CD612896-DB37-4748-B4A5-311F910886F3}",  "Source": 8},
+{ "DefaultGatewayMac": "00:0F:66:E3:35:8E",   "Description": "Network  2",  "DnsSuffix": "<none>",  "FirstNetwork": "Network  2",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{F04D25BB-BFA5-412C-869D-AB079EABBB45}",  "Source": 8},
+{ "DefaultGatewayMac": "00:14:BF:F6:BC:86",   "Description": "Network  3",  "DnsSuffix": "<none>",  "FirstNetwork": "Network  3",   "HostName": "ALEX32-PC.TESTER.ORG",   "ProfileGuid": "{CA7B9E8A-9A66-431E-9CD7-04EC22CD56BE}",  "Source": 8} ]
 }
 

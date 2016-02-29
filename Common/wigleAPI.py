@@ -21,7 +21,7 @@ class WigleAgent():
             self.response = send_user_check()
             response = self.check_cred_login()
             if response == 'false':
-                print "[*] Unable to validate this user..."
+                print " [*] Unable to validate this user..."
         except:
             #Use this two let user know we had a true login..
             print helpers.color('[*] WIGLE: This user was validated', bold=False)
@@ -36,7 +36,7 @@ class WigleAgent():
             try:
                 message = self.check_query_limit()
                 if message == "too many queries":
-                    print "[*]" + message
+                    print " [*]" + message
             except:
                 #Use pass since we dont have an error...
                 pass
@@ -67,8 +67,8 @@ class WigleAgent():
         try: 
             return response.json()
         except ValueError:  # includes simplejson.decoder.JSONDecodeError
-            print helpers.color('[*] WIGLE: Decoding JSON has failed', bold=False, warning=True)
-            print helpers.color('[!] Exiting...', bold=True, warning=True)
+            print helpers.color(' [*] WIGLE: Decoding JSON has failed', bold=False, warning=True)
+            print helpers.color(' [!] Exiting...', bold=True, warning=True)
             sys.exit()
     
     def send_user_check(self):
