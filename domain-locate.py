@@ -11,31 +11,23 @@ import argparse
 import sys
 import configparser
 from Helpers import helpers
-from Helpers import VersionCheck
-from Common import TaskController
+from Common import Conducter 
+
 
 
 def cli_parser():
     parser = argparse.ArgumentParser(add_help=False, description='''
-        Email enumeration is a important phase of so many operation that a pen-tester or\n
-        Red Teamer goes through. There are tons of applications that do this but I wanted\n
-        a simple yet effective way to get what Recon-Ng gets and theHarvester gets.\n 
-        (You may want to run -h)
+        Built off the Concept from Hacking Team and other Forensic Classes taken\n
+        from the past. Really intresting concept to track and correlate users.\n
         ''')
     parser.add_argument(
-        "-all", action='store_true', help="Use all non API methods to obtain Emails")
-    parser.add_argument("-e", metavar="company.com", default="",
-                        help="Set required email addr user, ex ale@email.com")
+        "-f", metavar='file-in.txt', help="Provide the output file from PS agent.")
     parser.add_argument(
-        "-l", action='store_true', help="List the current Modules Loaded")
+        "-k", metavar="Wifi-Location.kml", help="Set the output KML file name")
     parser.add_argument(
-        "-t", metavar="html / flickr / google", help="Test individual module (For Linting)")
+        "-u", metavar="UserName", help="Set the Username required for WIGLE API")
     parser.add_argument(
-        "-s", action='store_true', help="Set this to enable 'No-Scope' of the email parsing")
-    parser.add_argument(
-        "-n", action='store_true', help="Set this to enable Name Generation")
-    parser.add_argument(
-        "-verify", action='store_true', help="Set this to enable SMTP server email verify")
+        "-p", metavar="Password", help="Set the Password for WIGLE API")
     parser.add_argument(
         "-v", action='store_true', help="Set this switch for verbose output of modules")
     parser.add_argument('-h', '-?', '--h', '-help',
@@ -44,53 +36,26 @@ def cli_parser():
     if args.h:
         parser.print_help()
         sys.exit()
-    return args.all, args.e, args.l, args.t, args.s, args.n, args.verify, args.v
+    return args.f, args.k, args.v, args.u, args.p
 
 
-def TaskControler(version):
+def TaskControler():
     # Get all the options passed and pass it to the TaskConducter, this will
     # keep all the prcessing on the side.
     # need to pass the store true somehow to tell printer to restrict output
-    cli_all, cli_domain, cli_list, cli_test, cli_scope, cli_names, cli_verify, cli_verbose = cli_parser()
-    cli_domain = cli_domain.lower()
-    Task = TaskController.Conducter()
-    Task.load_modules()
-    if cli_list:
-        Task.ListModules()
-        V = VersionCheck.VersionCheck(version)
-        V.VersionRequest()
+    cli_file, cli_kmlname, cli_verbose, cli_username, cli_password = cli_parser()
+    if cli_file:
+        Task = Conducter.Conducter(cli_file, cli_kmlname, cli_username, cli_password, verbose=cli_verbose)
+        Task.TaskController()
+    else:
+        print " [*] No file name?"
         sys.exit(0)
-    if not len(cli_domain) > 1:
-        print helpers.color("[*] No Domain Supplied to start up!\n", warning=True)
-        sys.exit(0)
-    if cli_test:
-        # setup a small easy test to activate certain modules
-        V = VersionCheck.VersionCheck(version)
-        V.VersionRequest()
-        Task.TestModule(cli_domain, cli_test, verbose=cli_verbose, scope=cli_scope, Names=cli_names, Verify=cli_verify)
-    if cli_all:
-        V = VersionCheck.VersionCheck(version)
-        V.VersionRequest()
-        Task.TaskSelector(cli_domain, verbose=cli_verbose, scope=cli_scope, Names=cli_names, Verify=cli_verify)
 
-
-# def GenerateReport():
-    # BootStrap with tables :)
-    # Make a seprate reporting module fo sure way to busy here
 
 
 def main():
     # instatiate the class
-    try:
-        config = configparser.ConfigParser()
-        config.read('Common/SimplyEmail.ini')
-        version = str(config['GlobalSettings']['Version'])
-    except Exception as e:
-            print e
-    orc = TaskController.Conducter()
-    orc.title()
-    orc.title_screen()
-    TaskControler(version)
+    TaskControler()
 
 
 if __name__ == "__main__":

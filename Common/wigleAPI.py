@@ -1,11 +1,11 @@
 from uuid import getnode
-from Modules.Common import *
 import sys
 import re
 import requests
 import json
+from Helpers import helpers
 
-#Inspired and stolen from Jamie Bull (author).. at http://code.activestate.com/recipes/578637-wigle-wifi-geolocation/
+#Inspired and adapted from Jamie Bull (author).. at http://code.activestate.com/recipes/578637-wigle-wifi-geolocation/
 
 
 class WigleAgent():
@@ -14,13 +14,6 @@ class WigleAgent():
         self.agent(username, password)
         self.mac_address()
         # required options
-        self.description = "simple WIGLE query"
-        self.language = "python"
-
-        # options we require user interaction for- format is {Option : [Value, Description]]}
-        self.required_options = {"wigle_user" : ["offtest", "Set WIGLE User-Name"],
-                                 "wigle_pass" : ["83128312", "Set WIGLE Password"],
-                                 "mac" : ["00:22:55:DF:C8:01", "Set MAC Address"]}    
 
     def get_lat_lng(self, mac_address=None):
         #Start with Credintial check
